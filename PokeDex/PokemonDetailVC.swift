@@ -21,6 +21,7 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var currentEvoImageView: UIImageView!
     @IBOutlet weak var nextEvoImageView: UIImageView!
     @IBOutlet weak var evolutionLabel: UILabel!
+    @IBOutlet weak var loadingView: UIView!
     
     var pokemon: Pokemon!
 
@@ -32,6 +33,7 @@ class PokemonDetailVC: UIViewController {
         let image = UIImage(named: "\(pokemon.pokedexID)")
         mainImageView.image = image
         currentEvoImageView.image = image
+        loadingView.hidden = false
         
         pokemon.downloadPokemonDetails { () -> () in
             //This will be called after download is done
@@ -60,7 +62,11 @@ class PokemonDetailVC: UIViewController {
             if pokemon.nextEvolutionLevel != "" {
                 tempString += " - LVL \(pokemon.nextEvolutionLevel)"
             }
+            
+            evolutionLabel.text = tempString
         }
+        
+        loadingView.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
