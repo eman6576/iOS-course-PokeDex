@@ -138,11 +138,14 @@ class Pokemon {
                     }
                     
                     if types.count > 1 {
-                        for var x = 1; x < types.count; x++ {
+                        var x = 1
+                        repeat {
                             if let name = types[x]["name"] {
                                 self._type! += "/\(name.capitalizedString)"
                             }
-                        }
+                            
+                            x += 1
+                        } while x < types.count
                     }
                 } else {
                     self._type = ""
