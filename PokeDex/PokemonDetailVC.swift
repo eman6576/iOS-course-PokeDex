@@ -77,4 +77,8 @@ class PokemonDetailVC: UIViewController {
     @IBAction func backButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func loadingBackButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
